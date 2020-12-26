@@ -1,8 +1,11 @@
 import React from 'react'
+import Header from '../../components/header'
 
 const Mine = props => {
   return (
-    <div>Mine</div>
+    <div>
+      <Header title="Mine"/>
+      Mine</div>
   )
 }
 

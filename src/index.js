@@ -7,6 +7,7 @@ import {HashRouter as Router} from 'react-router-dom'
 
 ReactDOM.render(
   <Router>
-  <FootNav/>
-  <AppRouter/>
-</Router>, document.getElementById('root'))
+    <FootNav/>
+    <AppRouter/>
+  </Router>
+, document.getElementById('root'))

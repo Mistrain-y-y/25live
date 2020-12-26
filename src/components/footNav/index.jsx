@@ -4,7 +4,7 @@ import './index.less'
 
 const FootNav = () => {
   return (
-    <div className="navbar navbar-primary" style={{marginBottom: 0}}>
+    <div className="navbar navbar-footer" style={{marginBottom: 0}}>
       <ul>
         <li>
           <NavLink to="/" exact style={{ height: '100%', width: '100%' }}>
