@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import './index.less'
+import './style.less'
 
 const FootNav = () => {
   return (
