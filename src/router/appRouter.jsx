@@ -3,7 +3,7 @@ import { Route, HashRouter as Router, Switch } from 'react-router-dom'
 
 import Home from '../pages/home'
 import Life from '../pages/life'
-import Shop from '../pages/home'
+import Shop from '../pages/shop'
 import Mine from '../pages/mine'
 import NotFound from '../pages/notFound'
 

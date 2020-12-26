@@ -2,7 +2,7 @@ import React from 'react'
 
 const Life = () => {
   return (
-    <div></div>
+    <div>Life</div>
   )
 }
 

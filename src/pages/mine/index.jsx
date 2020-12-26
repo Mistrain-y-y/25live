@@ -2,7 +2,7 @@ import React from 'react'
 
 const Mine = props => {
   return (
-    <div>Shop</div>
+    <div>Mine</div>
   )
 }
 

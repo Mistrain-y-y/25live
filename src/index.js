@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import AppRouter from './router/appRouter'
-import './index.less'
+import './static/css/common.less'// 初始化 css
 
-ReactDOM.render(<AppRouter />, document.getElementById('root'))
+ReactDOM.render(<AppRouter />
+  , document.getElementById('root'))
