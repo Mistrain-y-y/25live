@@ -10,7 +10,13 @@ import banner3 from '../../static/images/03.jpg'
 import banner4 from '../../static/images/04.jpg'
 import banner5 from '../../static/images/05.jpg'
 
+import axios from 'axios'
+
 const Home = props => {
+  const test = () => {
+    axios.get('http://localhost:3033/api/users/play')
+    .then(res => console.log(res), err => console.log(err))
+  }
   return (
     <div className="swiper-box">
       <Header title="Home">
@@ -22,7 +28,10 @@ const Home = props => {
             <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
           </button>
         </form>
-        <button className="btn btn-login btn-default navbar-btn" style={{ backgroundColor: '#fff' }}>
+        <button className="btn btn-login btn-default navbar-btn"
+         style={{ backgroundColor: '#fff' }}
+         onClick={test}
+         >
           Login
       </button>
       </Header>
