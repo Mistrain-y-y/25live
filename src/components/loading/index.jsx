@@ -6,9 +6,9 @@ const Loading = props => {
   return (
     <>
       {
-        props.login.isLoading ?
+        props.loading.isLoading ?
           (<div className="mask">
-            <ul class="loading flex">
+            <ul className="loading flex">
               <ul className="loading flex">
                 <li style={{ '--line-index': 1 }}></li>
                 <li style={{ '--line-index': 2 }}></li>

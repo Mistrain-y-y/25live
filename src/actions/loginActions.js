@@ -16,7 +16,7 @@ export const changeToLoading = () => ({
 })
 
 export const loginRequest = (userData) => dispatch => {
-  dispatch(changeToLoading)
+  dispatch(changeToLoading())
   return axios.post('/api/login', userData)
     .then(res => {
       const token = res.data
@@ -24,7 +24,7 @@ export const loginRequest = (userData) => dispatch => {
       withToken(token)
       // 设置 token 到公共请求头, 让每次请求都携带这个请求头
       dispatch(changeToLogged(jwtDecode(token)))
-      dispatch(changeToLoading)
+      dispatch(changeToLoading())
     })
 }
 

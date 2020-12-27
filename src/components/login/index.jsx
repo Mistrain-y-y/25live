@@ -26,7 +26,7 @@ const Login = props => {
       props.loginActions.loginRequest({username, password})
       .then(() => {// 登陆成功
         props.closeLogin()// 关闭登录框
-        props.history.push('/')// 跳转到首页
+        props.history.replace('/')// 跳转到首页
       })
     }
   }

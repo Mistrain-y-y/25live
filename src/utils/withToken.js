@@ -5,7 +5,7 @@ const withToken = token => {
   if (token) {
     axios.defaults.headers.common['Authorization'] = `token ${token}`
   } else {
-    delete axios.defaults.headers['Authorization']
+    delete axios.defaults.headers.common['Authorization']
   }
 }
 
