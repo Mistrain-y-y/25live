@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as loginActions from '../../actions/loginActions'
 import jwtDecode from 'jwt-decode'
+import imgMistrain from '../../static/images/icons/mistrain.jpg'
 
 const Header = props => {
   const [showLogin, setShowLogin] = useState(false)
@@ -14,7 +15,7 @@ const Header = props => {
     if (token) {
       props.loginActions.changeToLogged((jwtDecode(token)))// 改变登录按钮
     }
-  }, [])
+  }, [props.loginActions])
 
   const toLogin = () => {
     setShowLogin(true)
@@ -22,7 +23,6 @@ const Header = props => {
   const closeLogin = () => {
     setShowLogin(false)
   }
-  console.log(props.login.user)
   return (
     <div>
       {
@@ -44,14 +44,14 @@ const Header = props => {
           {props.children && props.children}
         </div>
 
-        <div className="col-xs-2" style={{ padding: 0 }}>
+        <div className="col-xs-2" style={{ padding: 0, textAlign: 'center' }}>
           {
             !props.login.logged ? <button className="btn btn-login btn-default navbar-btn"
               style={{ backgroundColor: '#fff' }}
               onClick={toLogin}
             >
               Login
-      </button> : <img src={props.login.user.img} alt="user"/>
+      </button> : <img src={imgMistrain} alt="user" />
           }
         </div>
       </div>

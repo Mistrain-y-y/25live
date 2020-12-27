@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './style.less'
 import {withRouter} from 'react-router-dom'
 
@@ -6,7 +6,7 @@ const Login = props => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState({})
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading] = useState(false)
   
   const handleChangeUsername = e => {
     setUsername(e.target.value)

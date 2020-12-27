@@ -11,10 +11,6 @@ import banner4 from '../../static/images/04.jpg'
 import banner5 from '../../static/images/05.jpg'
 
 const Home = props => {
-  const test = () => {
-    // axios 要写自己的地址, 不是跨过去的地址.
-    // 可以省略协议, 主机和端口
-  }
   return (
     <div className="swiper-box">
       <Header title="Home">
