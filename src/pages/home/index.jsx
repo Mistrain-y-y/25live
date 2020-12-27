@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import './style.less'
 import Header from '../../components/header'
 import Swiper from '../../components/swiper'
@@ -15,17 +15,18 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Hot from './hot'
 import axios from 'axios'
+import './style.less'
 
 const Home = props => {
   const [homeList, setHomeList] = useState([])
   useEffect(() => {// 一挂载就请求数据
     axios.get('/api/home')
-    .then(res => {
-      setHomeList(res.data)
-    }, err => console.log(err))
+      .then(res => {
+        setHomeList(res.data)
+      }, err => console.log(err))
   }, [])
   return (
-    <div className="swiper-box">
+    <div className="home-page">
       <Header title="Home">
         <form className="navbar-form navbar-left container" role="search" style={{ padding: 0, marginRight: '0.2rem', marginLeft: '0.2rem' }}>
           <div className="form-group col-xs-9" style={{ padding: 0 }}>
@@ -33,18 +34,24 @@ const Home = props => {
           </div>
           <button type="submit" className="btn btn-primary col-xs-3">
             <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
-          </button> 
+          </button>
         </form>
       </Header>
-      <Swiper banners={[banner1, banner2, banner3, banner4, banner5]} />
-      
+
+      <div className="home-swiper">
+        <Swiper banners={[banner1, banner2, banner3, banner4, banner5]} />
+      </div>
+
       <FootNav />
 
       {
         homeList.map((item, index) => (
-          <Hot key={index} item={item}/>
+          <Hot key={index} item={item} />
         ))
       }
+      <div style={{height: '2rem', textAlign: 'center', color: '#ccc'}}>
+        <span>往上看看吧, 已经到底啦~</span>
+      </div>
     </div>
   )
 }

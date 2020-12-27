@@ -6,7 +6,6 @@ const Life = () => {
   return (
     <div>
       <Header title="Life" />
-      Life
       <FootNav />
     </div>
   )

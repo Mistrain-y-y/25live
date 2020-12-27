@@ -10,7 +10,7 @@ const Hot = props => {
           <div className="media">
             <div className="media-left media-middle">
               <a href="#">
-                <img className="media-object" src={img1}
+                <img className="media-object" src={props.item.img}
                 // --------------该写头像了---------------
                   style={{ width: '5em' }}
                   alt="..." />

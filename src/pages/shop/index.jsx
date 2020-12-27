@@ -6,7 +6,6 @@ const Shop = props => {
   return (
     <div>
       <Header title="Shop"/>
-      Shop
       <FootNav/>
       </div>
   )

@@ -25,6 +25,8 @@ export const loginRequest = (userData) => dispatch => {
       // 设置 token 到公共请求头, 让每次请求都携带这个请求头
       dispatch(changeToLogged(jwtDecode(token)))
       dispatch(changeToLoading())
+    }, err => {
+      dispatch(changeToLoading())
     })
 }
 
