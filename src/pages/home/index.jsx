@@ -26,12 +26,6 @@ const Home = props => {
             <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
           </button> 
         </form>
-        <button className="btn btn-login btn-default navbar-btn"
-         style={{ backgroundColor: '#fff' }}
-         onClick={test}
-         >
-          Login
-      </button>
       </Header>
       <Swiper banners={[banner1, banner2, banner3, banner4, banner5]} />
       <FootNav />
