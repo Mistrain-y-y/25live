@@ -10,12 +10,10 @@ import banner3 from '../../static/images/03.jpg'
 import banner4 from '../../static/images/04.jpg'
 import banner5 from '../../static/images/05.jpg'
 
-import axios from 'axios'
-
 const Home = props => {
   const test = () => {
-    axios.get('http://localhost:3033/api/users/play')
-    .then(res => console.log(res), err => console.log(err))
+    // axios 要写自己的地址, 不是跨过去的地址.
+    // 可以省略协议, 主机和端口
   }
   return (
     <div className="swiper-box">
@@ -26,7 +24,7 @@ const Home = props => {
           </div>
           <button type="submit" className="btn btn-primary col-xs-3">
             <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
-          </button>
+          </button> 
         </form>
         <button className="btn btn-login btn-default navbar-btn"
          style={{ backgroundColor: '#fff' }}
