@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './style.less'
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-import * as loginActions from '../../actions/loginActions'
+import {withRouter} from 'react-router-dom'
 
 const Login = props => {
   const [username, setUsername] = useState('')
@@ -26,8 +24,10 @@ const Login = props => {
       setErrors({password: '请填写密码!'})
     } else {// 发送请求
       props.loginActions.loginRequest({username, password})
-      .then(res => console.log(res),
-      err => console.log(err))
+      .then(() => {// 登陆成功
+        props.closeLogin()// 关闭登录框
+        props.history.push('/')// 跳转到首页
+      })
     }
   }
   const closeBox = () => {
@@ -82,8 +82,6 @@ const Login = props => {
   )
 }
 
-const mapDispatchToProps = dispatch => ({
-  loginActions: bindActionCreators(loginActions, dispatch)
-})
 
-export default connect(state => state, mapDispatchToProps)(Login)
+
+export default withRouter(Login)

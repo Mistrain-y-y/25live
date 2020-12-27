@@ -1,0 +1,1 @@
+export const CHANGE_TO_LOGGED = 'CHANGE_TO_LOGGED'
