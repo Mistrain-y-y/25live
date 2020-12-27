@@ -12,9 +12,7 @@ const Header = props => {
 
   useEffect(() => {// 组件一挂载就验证 token
     const token = sessionStorage.getItem('token')
-    if (token) {
-      props.loginActions.changeToLogged((jwtDecode(token)))// 改变登录按钮
-    }
+    props.loginActions.changeToLogged((jwtDecode(token)))// 改变登录按钮
   }, [props.loginActions])
 
   const toLogin = () => {

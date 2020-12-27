@@ -1,1 +1,3 @@
 export const CHANGE_TO_LOGGED = 'CHANGE_TO_LOGGED'
+
+export const CHANGE_TO_LOADING = 'CHANGE_TO_LOADING'

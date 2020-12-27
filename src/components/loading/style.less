@@ -1,0 +1,39 @@
+.mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  .flex {
+    margin: 0 auto;
+    margin-top: 40%;
+    display: flex;
+    list-style: none;
+  }
+
+  .loading>li {
+    --time: calc((var(--line-index) - 1) * 200ms);
+    border-radius: 3px;
+    width: 6px;
+    height: 30px;
+    background-color: #bbd9e7;
+    animation: beat 1s ease-in-out var(--time) infinite;
+  }
+
+  .loading>li~li {
+    margin-left: 5px;
+  }
+
+  @keyframes beat {
+
+    0%,
+    100% {
+      transform: scaleY(1);
+    }
+
+    50% {
+      transform: scaleY(.5);
+    }
+  }
+}
