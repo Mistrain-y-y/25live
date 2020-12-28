@@ -14,16 +14,17 @@ import banner5 from '../../static/images/05.jpg'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Hot from './hot'
-import axios from 'axios'
+import api from '../../api'
 import './style.less'
 
 const Home = props => {
   const [homeList, setHomeList] = useState([])
   useEffect(() => {// 一挂载就请求数据
-    axios.get('/api/home')
-      .then(res => {
-        setHomeList(res.data)
-      }, err => console.log(err))
+      api.homeHot.homeHotData()
+      .then(res => res.json(), err => console.log(err))
+      .then(data => {
+        setHomeList(data)
+      })
   }, [])
   return (
     <div className="home-page">

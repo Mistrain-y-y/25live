@@ -1,10 +1,12 @@
 import React from 'react'
-import img1 from '../../../static/images/icons/caoyang.jpg'
 import './style.less'
 
 const Hot = props => {
+  const getDetails = () => {
+    
+  }
   return (
-    <div>
+    <div onClick={getDetails}>
       <ul className="list-group">
         <li className="list-group-item">
           <div className="media">
