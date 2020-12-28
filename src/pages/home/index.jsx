@@ -16,9 +16,11 @@ import { bindActionCreators } from 'redux'
 import Hot from './hot'
 import api from '../../api'
 import './style.less'
+import SearchInput from '../../components/searchInput'
 
 const Home = props => {
   const [homeList, setHomeList] = useState([])
+
   useEffect(() => {// 一挂载就请求数据
       api.homeHot.homeHotData()
       .then(res => res.json(), err => console.log(err))
@@ -26,17 +28,11 @@ const Home = props => {
         setHomeList(data)
       })
   }, [])
+
   return (
     <div className="home-page">
       <Header title="Home">
-        <form className="navbar-form navbar-left container" role="search" style={{ padding: 0, marginRight: '0.2rem', marginLeft: '0.2rem' }}>
-          <div className="form-group col-xs-9" style={{ padding: 0 }}>
-            <input type="text" className="form-control" placeholder="Search" />
-          </div>
-          <button type="submit" className="btn btn-primary col-xs-3">
-            <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
-          </button>
-        </form>
+        <SearchInput/>
       </Header>
 
       <div className="home-swiper">
