@@ -23,7 +23,7 @@ export const loginRequest = (userData) => dispatch => {
   return axios.post('/api/login', userData)
     .then(res => {
       const token = res.data
-      sessionStorage.setItem("token", token)// 保存 token 到 sessionStorage
+      sessionStorage.setItem("token", token) // 保存 token 到 sessionStorage
       withToken(token)
       // 设置 token 到公共请求头, 让每次请求都携带这个请求头
       console.log(jwtDecode(token))
@@ -38,13 +38,13 @@ export const loginRequest = (userData) => dispatch => {
 export const detailRequest = name => dispatch => {
   dispatch(changeToLoading())
   return axios.get(`/api/home/${name}`)
-  .then(res => {
-    dispatch(changeToLoading())
-    return res
-  }, err => {
-    dispatch(changeToLoading())
-    return err
-  })
+    .then(res => {
+      dispatch(changeToLoading())
+      return res
+    }, err => {
+      dispatch(changeToLoading())
+      return err
+    })
 }
 
 export const showLoginPage = () => ({
@@ -55,5 +55,15 @@ export const hideLoginPage = () => ({
   type: HIDE_LOGIN_PAGE
 })
 
-
-
+// 请求 shopList
+export const shopList = () => dispatch => {
+  dispatch(changeToLoading())
+  return axios.get('/api/shop')
+    .then(res => {
+      dispatch(changeToLoading())
+      return res
+    }, err => {
+      dispatch(changeToLoading())
+      return err
+    })
+}

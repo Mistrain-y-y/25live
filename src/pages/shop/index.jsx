@@ -1,32 +1,39 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Header from '../../components/header'
 import FootNav from '../../components/footNav'
-import mistrainImg from '../../static/images/icons/mistrain.jpg'
+import ShopList from './shopList'
+import {connect} from 'react-redux'
+import * as loginActions from '../../actions/loginActions'
+import { bindActionCreators } from 'redux'
 
 const Shop = props => {
+  const [shopList, setShopList] = useState([])
+  useEffect(() => {// 一挂载就请求数据
+    props.loginActions.shopList()
+    .then(res => {
+      console.log(res)
+      setShopList(res.data)
+    }, err => console.log(err))
+  }, [])
   return (
     <div>
       <Header title="Shop" />
       <FootNav />
 
-      <div className="container">
-        <div className="row col-sm-6" style={{ marginTop: '59px' }}>
-          <div className="col-sm-6 col-md-4">
-            <div className="thumbnail">
-              <img src={mistrainImg} alt="img" />
-              <div className="caption">
-                <h3>Thumbnail label</h3>
-                <p>...</p>
-                <p><button className="btn btn-primary" role="button">Button</button>
-                  <button className="btn btn-default" role="button">Button</button></p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="container" style={{ marginTop: '59px', marginBottom: '59px' }}>
+        {
+          shopList.map((item, index) => (
+            <ShopList item={item} key={index}/>
+          ))
+        }
       </div>
 
     </div>
   )
 }
 
-export default Shop
+const mapDispatchToProps = dispatch => ({
+  loginActions: bindActionCreators(loginActions, dispatch)
+})
+
+export default connect(null, mapDispatchToProps)(Shop)
