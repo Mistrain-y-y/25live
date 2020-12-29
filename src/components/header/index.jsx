@@ -22,9 +22,12 @@ const Header = props => {
     props.loginActions.hideLoginPage()
   }
   const goBack = () => {
-    console.log(props.history)
     props.history.goBack()
   }
+  const toMine = () => {
+    props.history.push('/mine')
+  }
+
   return (
     <div>
       {
@@ -59,7 +62,11 @@ const Header = props => {
               onClick={toLogin}
             >
               Login
-      </button> : <img src={props.login.user.img} alt="user" />
+      </button> : <img
+                src={props.login.user.img}
+                alt="user"
+                onClick={toMine}
+              />
           }
         </div>
       </div>

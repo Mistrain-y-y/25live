@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 
 const SearchInput = props => {
   const [value, setValue] = useState('')
+
   const handleInput = e => {
     setValue(e.target.value)
   }
@@ -12,6 +13,10 @@ const SearchInput = props => {
       props.history.push('/search')
     }
   }
+  const toSearch = () => {
+    props.history.push('/search')
+  }
+
   return (
     <form
       className="navbar-form navbar-left container"
@@ -31,6 +36,8 @@ const SearchInput = props => {
          value={value}
          onKeyUp={handleKeyUp}
          onChange={handleInput}
+         onFocus={toSearch}
+         autoFocus={props.autoFocus}
          />
       </div>
       <button type="submit" className="btn btn-primary col-xs-3">
