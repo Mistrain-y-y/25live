@@ -1,3 +1,7 @@
 export const CHANGE_TO_LOGGED = 'CHANGE_TO_LOGGED'
 
 export const CHANGE_TO_LOADING = 'CHANGE_TO_LOADING'
+
+export const SHOW_LOGIN_PAGE = 'SHOW_LOGIN_PAGE'
+
+export const HIDE_LOGIN_PAGE = 'HIDE_LOGIN_PAGE'

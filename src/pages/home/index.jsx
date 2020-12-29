@@ -22,12 +22,14 @@ const Home = props => {
   const [homeList, setHomeList] = useState([])
 
   useEffect(() => {// 一挂载就请求数据
+    props.loginActions.changeToLoading()
       api.homeHot.homeHotData()
       .then(res => res.json(), err => console.log(err))
       .then(data => {
         setHomeList(data)
+        props.loginActions.changeToLoading()
       })
-  }, [])
+  }, [props.loginActions])
 
   return (
     <div className="home-page">

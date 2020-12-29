@@ -19,10 +19,13 @@ const Login = props => {
     e.preventDefault()
     if (!username && !password) {// 验证不为空
       setErrors({ username: '请填写用户名！', password: '请填写密码!' })
+      setFailedMsg('')
     } else if (!username) {
       setErrors({ username: '请填写用户名！' })
+      setFailedMsg('')
     } else if (!password) {
       setErrors({ password: '请填写密码!' })
+      setFailedMsg('')
     } else {// 发送请求
       props.loginActions.loginRequest({ username, password })
         .then(() => {// 登陆成功或失败都进入这个 then

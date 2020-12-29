@@ -6,6 +6,7 @@ import Life from '../pages/life'
 import Shop from '../pages/shop'
 import Mine from '../pages/mine'
 import NotFound from '../pages/notFound'
+import Details from '../pages/home/hot/details'
 
 const AppRouter = () => {
   return (
@@ -14,6 +15,7 @@ const AppRouter = () => {
       <Route path="/life" exact component={Life} />
       <Route path="/shop" exact component={Shop} />
       <Route path="/mine" exact component={Mine} />
+      <Route path="/details/:name" exact component={Details} />
       <Route path="/*" component={NotFound} />
     </Switch>
   )

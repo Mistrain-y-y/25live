@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import './style.less'
 import Login from '../login'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as loginActions from '../../actions/loginActions'
 import jwtDecode from 'jwt-decode'
-import imgMistrain from '../../static/images/icons/mistrain.jpg'
+import { withRouter } from 'react-router-dom'
 
 const Header = props => {
-  const [showLogin, setShowLogin] = useState(false)
-
   useEffect(() => {// 组件一挂载就验证 token
     const token = sessionStorage.getItem('token')
     if (token) {// 如果 token 存在, 踩坑实测无法 jwtDecode(null)!
@@ -18,22 +16,32 @@ const Header = props => {
   }, [props.loginActions])
 
   const toLogin = () => {
-    setShowLogin(true)
+    props.loginActions.showLoginPage()
   }
   const closeLogin = () => {
-    setShowLogin(false)
+    props.loginActions.hideLoginPage()
+  }
+  const goBack = () => {
+    console.log(props.history)
+    props.history.goBack()
   }
   return (
     <div>
       {
-        showLogin ? <Login closeLogin={closeLogin}
+        props.showLogin.showLogin ? <Login closeLogin={closeLogin}
           loginActions={props.loginActions} /> : null
       }
       <div className="navbar navbar-header container">
         <div className="col-xs-1" style={{ padding: 0 }}>
-          <button className="btn btn-back navbar-btn" style={{ backgroundColor: '#fff' }}>
-            <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-          </button>
+          {
+            props.showBackBtn ? <button
+              className="btn btn-back navbar-btn"
+              style={{ backgroundColor: '#fff' }}
+              onClick={goBack}
+            >
+              <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </button> : null
+          }
         </div>
 
         <div className="col-xs-2" style={{ padding: 0 }}>
@@ -51,7 +59,7 @@ const Header = props => {
               onClick={toLogin}
             >
               Login
-      </button> : <img src={imgMistrain} alt="user" />
+      </button> : <img src={props.login.user.img} alt="user" />
           }
         </div>
       </div>
@@ -63,4 +71,4 @@ const mapDispatchToProps = dispatch => ({
   loginActions: bindActionCreators(loginActions, dispatch)
 })
 
-export default connect(state => state, mapDispatchToProps)(Header)
+export default connect(state => state, mapDispatchToProps)(withRouter(Header))

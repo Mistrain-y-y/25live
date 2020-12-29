@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken')
 const config = require('../config')
 
 router.post('/', (req, res) => {
-  console.log(req.body)
   const {username, password} = req.body
   // 在数据库中验证 username 和 password
   User.findOne({
@@ -14,17 +13,13 @@ router.post('/', (req, res) => {
   .then(data => {
     if (data) {// 查找到数据, 登陆成功
       console.log(data)
-      const { user, img} = data
+      const { user, img, id} = data
       const token = jwt.sign({// 生成 token
-        user, img
+        user, id, img
       }, config.jwtSecret)// 参数2是自定义的字符串
       res.send(token)
     } else {// 没有查找到
-      res.status(400).json({
-        errors: {
-          
-        }
-      })
+      res.status(400).json()
     }
   })
 })
