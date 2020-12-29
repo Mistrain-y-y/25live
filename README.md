@@ -3,5 +3,24 @@
 
 ## 文件说明
 
-server 后台
-src 前台
+### server 后台
+
+启动 index.js 后台程序
+
+#### database
+
+mongodb 数据库, 只负责登录功能
+
+#### data
+
+其他页面伪数据
+
+### src 前台
+
+> yarn start 启动 react
+
+## 功能
+
+### 用户登录
+
+### 页面数据展示
