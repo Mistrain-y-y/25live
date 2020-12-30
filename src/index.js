@@ -16,11 +16,11 @@ const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk
 withToken(sessionStorage.getItem('token'))
 // 设置公共请求头
 
-ReactDOM.render(
+ReactDOM.render((
   <Provider store={store}>
     <Loading/>
     <Router>
-    <AppRouter/>
-  </Router>
+      <AppRouter/>
+    </Router>
   </Provider>
-, document.getElementById('root'))
+), document.getElementById('root'))
