@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import * as loginActions from '../../actions/loginActions'
 import { bindActionCreators } from 'redux'
 import './style.less'
+import Alert from './alert'
 
 const Shop = props => {
   const [shopList, setShopList] = useState([])
@@ -13,11 +14,10 @@ const Shop = props => {
 
   const clickShowAlert = () => {
     setShowAlert(true)
-    // ------------定时器写在这里不知道对不对-------------
-    const timeOut = setTimeout(() => {
-      console.log('hhh')
-      setShowAlert(false)
-    }, 3000)
+  }
+
+  const hideAlert = () => {
+    setShowAlert(false)
   }
 
   useEffect(() => {// 一挂载就请求数据
@@ -26,12 +26,6 @@ const Shop = props => {
         setShopList(res.data)
       }, err => console.log(err))
   }, [props.loginActions])
-
-  useEffect(() => {
-    return () => {
-      // ----------想要清除定时器----------
-    }
-  }, [])
 
   return (
     <div>
@@ -42,15 +36,7 @@ const Shop = props => {
         style={{ paddingTop: '59px'}}>
 
         {
-          showAlert ? <div
-            className="alert alert-success shop-success"
-            role="alert"
-          >
-            <span
-              className="glyphicon glyphicon-ok"
-              style={{ fontSize: '0.5rem', marginRight: '0.2rem' }}></span>
-        收藏商品成功!
-        </div> : null
+          showAlert ? <Alert hideAlert={hideAlert}/> : null
         }
 
         {

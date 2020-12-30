@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import './style.less'
 import { connect } from 'react-redux'
 
 const Loading = props => {
   return (
-    <>
+    <Fragment>
       {
         props.loading.isLoading ?
           (<div className="mask">
@@ -19,7 +19,7 @@ const Loading = props => {
             </ul>
           </div>) : null
       }
-    </>
+    </Fragment>
   )
 }
 

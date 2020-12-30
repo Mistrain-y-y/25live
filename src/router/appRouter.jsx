@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, Fragment } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 // Loading 直接引入
@@ -18,7 +18,8 @@ const Search = lazy(() => import('../pages/search'))
 const AppRouter = () => {
   return (
     <>
-      <Suspense fallback={<div><Loading /><Header/><FootNav /></div>}>
+    {/* Fragment 只允许有 key, 空标签啥也不允许 */}
+      <Suspense fallback={<Fragment><Loading /><Header/><FootNav /></Fragment>}>
         {/* 注意 Loading 组件本身没有最外层的包裹, 因此包 div */}
         <Switch>
           <Route path="/" exact component={Home} />
