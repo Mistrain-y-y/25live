@@ -8,7 +8,6 @@ import Header from '../../components/header'
 import Options from './options'
 
 const Mine = props => {
-  console.log(props)
   return (
     <div>
       <FootNav />

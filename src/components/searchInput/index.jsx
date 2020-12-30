@@ -17,7 +17,6 @@ const SearchInput = props => {
     props.history.push('/search')
   }
 
-  console.log(props)
   return (
     <form
       className="navbar-form navbar-left container"
