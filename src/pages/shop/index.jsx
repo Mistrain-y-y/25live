@@ -29,7 +29,7 @@ const Shop = props => {
 
   return (
     <div>
-      <Header title="Shop" />
+      <Header title="Shop" showLoginBtn={true}/>
       <FootNav />
 
       <div className="container shop-container"

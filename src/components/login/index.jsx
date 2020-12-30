@@ -32,7 +32,6 @@ const Login = props => {
           if (sessionStorage.getItem('token')) {
             setFailedMsg('')
             props.closeLogin()// 关闭登录框
-            props.history.replace('/')// 跳转到首页
           } else {
             setFailedMsg('用户名或密码错误!')
           }

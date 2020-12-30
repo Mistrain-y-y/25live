@@ -5,7 +5,7 @@ import FootNav from '../../components/footNav'
 const Life = () => {
   return (
     <div>
-      <Header title="Life" />
+      <Header title="Life" showLoginBtn={true}/>
       <FootNav />
     </div>
   )

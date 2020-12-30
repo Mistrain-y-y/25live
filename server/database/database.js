@@ -12,7 +12,9 @@ const userSchema = new mongoose.Schema({
   username: String,
   password: String,
   user: String,
-  img: String
+  img: String,
+  msg: String,
+  identity: String
 })
 
 // 创建集合

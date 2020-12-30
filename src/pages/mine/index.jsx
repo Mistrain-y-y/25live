@@ -1,33 +1,25 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import FootNav from '../../components/footNav'
 import './style.less'
 import { connect } from 'react-redux'
+import UserMsg from './userMsg'
+import NotLogged from './notLogged'
+import Header from '../../components/header'
+import Options from './options'
 
 const Mine = props => {
-  const { img, user } = props.login.user
+  console.log(props)
   return (
-    <Fragment>
+    <div>
       <FootNav />
+      <Header showLoginBtn={false} title="Mine"/>
+      {
+        props.login.logged ?
+          <UserMsg /> : <NotLogged />
+      }
 
-      <div className="img-media">
-        <div className="media-middle"
-        >
-          <img className="mine-img" src={img}
-            alt="img" />
-        </div>
-
-        <div className="media-body">
-          <h3 className="mine-name"
-            style={{ textAlign: 'center' }}
-          >{user}</h3>
-          <p style={{ textAlign: 'center', fontSize: '0.3rem' }}>一只蓝恐龙~</p>
-          <p style={{ textAlign: 'center' }}>React前端开发工程师烟雨恐龙!</p>
-        </div>
-      </div>
-
-      {/* 该写下面的设置等选项了---------- */}
-
-    </Fragment>
+      <Options/>
+    </div>
   )
 }
 

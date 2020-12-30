@@ -33,12 +33,12 @@ const Home = props => {
 
   return (
     <div className="home-page">
-      <Header title="Home">
+      <Header title="Home" showLoginBtn={true}>
         <SearchInput/>
       </Header>
 
       <div className="home-swiper">
-        <Swiper banners={[banner1, banner2, banner3, banner4, banner5]} />
+        <Swiper banners={[banner3, banner2, banner1, banner4, banner5]} />
       </div>
 
       <FootNav />

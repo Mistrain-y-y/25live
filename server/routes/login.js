@@ -13,9 +13,9 @@ router.post('/', (req, res) => {
   .then(data => {
     if (data) {// 查找到数据, 登陆成功
       console.log(data)
-      const { user, img, id} = data
+      const { user, img, id, msg, identity} = data
       const token = jwt.sign({// 生成 token
-        user, id, img
+        user, id, img, msg, identity
       }, config.jwtSecret)// 参数2是自定义的字符串
       res.send(token)
     } else {// 没有查找到

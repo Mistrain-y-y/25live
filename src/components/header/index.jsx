@@ -57,16 +57,17 @@ const Header = props => {
 
         <div className="col-xs-2" style={{ padding: 0, textAlign: 'center' }}>
           {
-            !props.login.logged ? <button className="btn btn-login btn-default navbar-btn"
-              style={{ backgroundColor: '#fff' }}
-              onClick={toLogin}
-            >
-              Login
+            props.showLoginBtn ?
+              (!props.login.logged ? <button className="btn btn-login btn-default navbar-btn"
+                style={{ backgroundColor: '#fff' }}
+                onClick={toLogin}
+              >
+                Login
       </button> : <img
-                src={props.login.user.img}
-                alt="user"
-                onClick={toMine}
-              />
+                  src={props.login.user.img}
+                  alt="user"
+                  onClick={toMine}
+                />) : null
           }
         </div>
       </div>
