@@ -23,15 +23,9 @@ const shopList = [{
     price: '88.00'
   },
   {
-    name: '外国靓仔无人',
-    img: 'https://s3.ax1x.com/2020/12/27/rIw559.jpg',
-    description: '无人大佬从未换过的外国帅哥头像',
-    price: '199.00'
-  },
-  {
     name: '欧洲人复读机',
     img: 'https://s3.ax1x.com/2020/12/30/rLu3U1.png',
-    description: '欧洲人的复读机, 质量极佳',
+    description: '欧洲人的复读机, 一直复读, 质量极佳',
     price: '59.00'
   }
 ]
