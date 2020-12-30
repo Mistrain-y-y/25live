@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
+import './style.less'
 
 const Alert = props => {
   useEffect(() => {
@@ -16,9 +17,8 @@ const Alert = props => {
       role="alert"
     >
       <span
-        className="glyphicon glyphicon-ok"
-        style={{ fontSize: '0.5rem', marginRight: '0.2rem' }}></span>
-        收藏商品成功!
+        className="glyphicon glyphicon-ok"></span>
+        收藏成功!
     </div>
   )
 }
