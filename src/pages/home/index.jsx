@@ -48,6 +48,7 @@ const Home = props => {
           <Hot key={index} item={item} />
         ))
       }
+      
       <div style={{height: '2rem', textAlign: 'center', color: '#ccc'}}>
         <span>往上看看吧, 已经到底啦~</span>
       </div>
