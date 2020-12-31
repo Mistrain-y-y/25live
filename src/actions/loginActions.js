@@ -67,3 +67,16 @@ export const shopList = () => dispatch => {
       return err
     })
 }
+
+// 请求 mine 页面用户信息
+export const mineMsg = () => dispatch => {
+  dispatch(changeToLoading())
+  return axios.get('/api/mine')
+  .then(res => {
+    dispatch(changeToLoading())
+    return res
+  }, err => {
+    dispatch(changeToLoading())
+    return err
+  })
+}
