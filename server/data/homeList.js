@@ -17,7 +17,7 @@ const homeList = [{
     img: 'https://s3.ax1x.com/2020/12/27/rIw2uT.jpg'
   },
   {
-    name: 'kunkun',
+    name: 'kunkun', 
     num: 30,
     content: 'Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.',
     img: 'https://s3.ax1x.com/2020/12/27/rIwWbF.jpg'
