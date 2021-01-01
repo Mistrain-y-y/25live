@@ -23,7 +23,9 @@ const Details = props => {
 
   return (
     <div>
-      <Header title={props.match.params.name} showBackBtn={true} />
+      <Header title="返回" showBackBtn={true} >
+      <h4 style={{fontWeight: 700, lineHeight: '0.6rem', textAlign: 'center'}}>{props.match.params.name}</h4>
+        </Header>
       <div className="panel panel-default" style={{ marginTop: '59px' }}>
         <img src={detail.img} alt="img" style={{ width: '100%' }} />
         <div className="panel-body">

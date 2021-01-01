@@ -1,6 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import {withRouter} from 'react-router-dom'
+import {bindActionCreators} from 'redux'
+import * as loginActions from '../../../actions/loginActions'
 
 const ShopList = props => {
+  const toShopDetail = () => {
+    if (props.login.logged) {
+      props.history.push(`/shop/detail/${props.item.id}`)
+    } else {// 没登录, 显示登录页面
+      props.loginActions.showLoginPage()
+    }
+  }
+
   return (
     <div className="thumbnail" style={{display: 'inline-block',width: '50%'}}>
       <img src={props.item.img} alt="img" style={{width: '3rem', height: '3rem'}}/>
@@ -15,13 +27,18 @@ const ShopList = props => {
          </p>
         <p><button
          className="btn btn-primary" 
-        role="button"
         onClick={props.clickShowAlert}
         >收藏</button>
-          <button className="btn btn-default" role="button">查看详情</button></p>
+          <button className="btn btn-default"
+          onClick={toShopDetail}
+          >查看详情</button></p>
       </div>
     </div>
   )
 }
 
-export default ShopList
+const mapDispatchToProps = dispatch => ({
+  loginActions: bindActionCreators(loginActions, dispatch)
+})
+
+export default connect(state => state, mapDispatchToProps)(withRouter(ShopList))

@@ -8,11 +8,14 @@ import Header from '../components/header'
 
 // 懒加载
 const Home = lazy(() => import('../pages/home'))
-const Life = lazy(() => import('../pages/life'))
+const Details = lazy(() => import('../pages/home/hot/details'))
+
 const Shop = lazy(() => import('../pages/shop'))
+const ShopDetail = lazy(() => import('../pages/shop/shopList/shopDetail'))
+const Life = lazy(() => import('../pages/life'))
 const Mine = lazy(() => import('../pages/mine'))
 const NotFound = lazy(() => import('../pages/notFound'))
-const Details = lazy(() => import('../pages/home/hot/details'))
+
 const Search = lazy(() => import('../pages/search'))
 
 const AppRouter = () => {
@@ -23,11 +26,12 @@ const AppRouter = () => {
         {/* 注意 Loading 组件本身没有最外层的包裹, 因此包 div */}
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/life" exact component={Life} />
+          <Route path="/details/:name" exact component={Details} />
           <Route path="/shop" exact component={Shop} />
+          <Route path="/shop/detail/:id" exact component={ShopDetail} />
+          <Route path="/life" exact component={Life} />
           <Route path="/mine" exact component={Mine} />
           <Route path="/search" exact component={Search} />
-          <Route path="/details/:name" exact component={Details} />
           <Route path="/*" component={NotFound} />
         </Switch>
       </Suspense>

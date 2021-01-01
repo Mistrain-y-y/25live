@@ -34,7 +34,7 @@ export const loginRequest = (userData) => dispatch => {
     })
 }
 
-// 请求详情页面
+// 请求 home 详情页面
 export const detailRequest = name => dispatch => {
   dispatch(changeToLoading())
   return axios.get(`/api/home/${name}`)
@@ -55,7 +55,7 @@ export const hideLoginPage = () => ({
   type: HIDE_LOGIN_PAGE
 })
 
-// 请求 shopList
+// 请求 shopList 信息
 export const shopList = () => dispatch => {
   dispatch(changeToLoading())
   return axios.get('/api/shop')
@@ -68,15 +68,28 @@ export const shopList = () => dispatch => {
     })
 }
 
+// 请求 shopDetail 详情信息
+export const shopDetail = id => dispatch => {
+  dispatch(changeToLoading())
+  return axios.get(`/api/shop/detail/${id}`)
+    .then(res => {
+      dispatch(changeToLoading())
+      return res
+    }, err => {
+      dispatch(changeToLoading())
+      return err
+    })
+}
+
 // 请求 mine 页面用户信息
 export const mineMsg = () => dispatch => {
   dispatch(changeToLoading())
-  return axios.get('/api/mine')
-  .then(res => {
-    dispatch(changeToLoading())
-    return res
-  }, err => {
-    dispatch(changeToLoading())
-    return err
-  })
+  return axios.get(`/api/mine`)
+    .then(res => {
+      dispatch(changeToLoading())
+      return res
+    }, err => {
+      dispatch(changeToLoading())
+      return err
+    })
 }
