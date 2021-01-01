@@ -28,7 +28,7 @@ const Shop = props => {
   }, [props.loginActions])
 
   return (
-    <div>
+    <div className="shop-page">
       <Header title="Shop" showLoginBtn={true}/>
       <FootNav />
 

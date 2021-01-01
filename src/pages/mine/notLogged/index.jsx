@@ -20,6 +20,7 @@ const NotLogged = props => {
           style={{ textAlign: 'center' }}
         >请先登录!</h3>
         <button className="btn btn-primary btn-lg btn-block"
+        style={{borderRadius: '0.95rem'}}
         onClick={showLogin}
         >login</button>
       </div>

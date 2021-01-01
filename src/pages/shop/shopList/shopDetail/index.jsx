@@ -4,6 +4,7 @@ import * as loginActions from '../../../../actions/loginActions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import './style.less'
+import DetailNav from './detailNav'
 
 const ShopDetail = props => {
   const [name, setName] = useState('')
@@ -37,6 +38,8 @@ const ShopDetail = props => {
       <Header showBackBtn={true} title="返回">
         <h4 style={{ fontWeight: 700, lineHeight: '0.6rem', textAlign: 'center' }}>{name}</h4>
       </Header>
+      <DetailNav/>
+
       <div className="panel panel-default" style={{ marginTop: '59px' }}>
         <img src={img} alt="img" style={{ width: '100%' }} />
         <div className="good-base">

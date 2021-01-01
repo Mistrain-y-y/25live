@@ -9,7 +9,7 @@ import Options from './options'
 
 const Mine = props => {
   return (
-    <div>
+    <div className="mine-page">
       <FootNav />
       <Header showLoginBtn={false} title="Mine"/>
       {

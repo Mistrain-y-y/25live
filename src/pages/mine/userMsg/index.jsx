@@ -43,6 +43,7 @@ const UserMsg = props => {
         <p style={{ textAlign: 'center', fontSize: '0.35rem' }}>{identity}</p>
         <p style={{ textAlign: 'center' }}>{msg}</p>
         <button className="btn btn-primary btn-lg btn-block"
+        style={{borderRadius: '0.95rem'}}
           onClick={userLogOut}
         >log out</button>
       </div>

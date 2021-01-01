@@ -19,7 +19,7 @@ const Options = () => {
           display: 'inline-block',
           width: '50%'
         }}>
-        <span className="glyphicon glyphicon-barcode" aria-hidden="true"></span>
+        <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
         购物车
       </div>
       <div
