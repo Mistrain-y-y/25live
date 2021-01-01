@@ -14,7 +14,11 @@ const Shop = props => {
 
   const clickShowAlert = e => {
     e.stopPropagation()
-    setShowAlert(true)
+    if (props.login.logged) {
+      setShowAlert(true)
+    } else {
+      props.loginActions.showLoginPage()
+    }
   }
 
   const hideAlert = () => {
@@ -59,4 +63,4 @@ const mapDispatchToProps = dispatch => ({
   loginActions: bindActionCreators(loginActions, dispatch)
 })
 
-export default connect(null, mapDispatchToProps)(Shop)
+export default connect(state => state, mapDispatchToProps)(Shop)
