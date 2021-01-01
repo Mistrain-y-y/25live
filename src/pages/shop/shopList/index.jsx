@@ -5,7 +5,8 @@ import {bindActionCreators} from 'redux'
 import * as loginActions from '../../../actions/loginActions'
 
 const ShopList = props => {
-  const toShopDetail = () => {
+  const toShopDetail = e => {
+    e.stopPropagation()
     if (props.login.logged) {
       props.history.push(`/shop/detail/${props.item.id}`)
     } else {// 没登录, 显示登录页面
@@ -14,7 +15,9 @@ const ShopList = props => {
   }
 
   return (
-    <div className="thumbnail" style={{display: 'inline-block',width: '50%'}}>
+    <div 
+    onClick={toShopDetail}
+    className="thumbnail" style={{display: 'inline-block', width: '47%', margin: '0.1rem 0 0 2%', border: 'none'}}>
       <img src={props.item.img} alt="img" style={{width: '3rem', height: '3rem'}}/>
       <div className="caption">
         <h3>{props.item.name}</h3>

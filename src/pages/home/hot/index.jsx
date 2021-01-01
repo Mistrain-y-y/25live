@@ -17,7 +17,7 @@ const Hot = props => {
   return (
     <div onClick={getDetails}>
       <ul className="list-group">
-        <li className="list-group-item">
+        <li className="list-group-item" style={{border: 'none'}}>
           <div className="media">
             <div className="media-left media-middle">
               <img className="media-object" src={props.item.img}

@@ -21,7 +21,6 @@ const ShopDetail = props => {
   useEffect(() => {// 请求页面数据
     props.loginActions.shopDetail(id)
       .then(res => {
-        console.log(res.data)
         setName(res.data.name)
         setCount(res.data.count)
         setImg(res.data.img)
@@ -65,7 +64,7 @@ const ShopDetail = props => {
 
         <div className="comment-box">
           <h4>
-            <span class="glyphicon glyphicon-comment" aria-hidden="true" style={{ margin: '0 0.2rem' }}></span>
+            <span className="glyphicon glyphicon-comment" aria-hidden="true" style={{ margin: '0 0.2rem' }}></span>
             <span style={{ fontWeight: 700 }}>商品评论</span>
           </h4>
           <div className="comments-content">

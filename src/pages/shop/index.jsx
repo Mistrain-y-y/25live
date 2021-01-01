@@ -12,7 +12,8 @@ const Shop = props => {
   const [shopList, setShopList] = useState([])
   const [showAlert, setShowAlert] = useState(false)
 
-  const clickShowAlert = () => {
+  const clickShowAlert = e => {
+    e.stopPropagation()
     setShowAlert(true)
   }
 
@@ -33,7 +34,7 @@ const Shop = props => {
       <FootNav />
 
       <div className="container shop-container"
-        style={{ paddingTop: '59px'}}>
+        style={{ padding: '59px .1rem .1rem 0'}}>
 
         {
           showAlert ? <Alert hideAlert={hideAlert}/> : null
@@ -45,7 +46,7 @@ const Shop = props => {
           ))
         }
 
-        <div style={{ height: '2rem', textAlign: 'center', color: '#ccc' }}>
+        <div style={{ height: '2rem', textAlign: 'center', color: '#ccc', paddingTop: '0.2rem' }}>
           <span>往上看看吧, 已经到底啦~</span>
         </div>
       </div>
