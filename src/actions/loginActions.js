@@ -92,3 +92,16 @@ export const mineMsg = () => dispatch => {
       return err
     })
 }
+
+// 请求 life 页面数据
+export const lifeList = () => dispatch => {
+  dispatch(changeToLoading())
+  return axios.get('/api/life')
+  .then(res => {
+    dispatch(changeToLoading())
+    return res
+  }, err => {
+    dispatch(changeToLoading())
+    return err
+  })
+}

@@ -33,7 +33,7 @@ const ShopDetail = props => {
   }, [props.loginActions, id])
 
   return (
-    <div>
+    <div className="shop-detail-page">
       <Header showBackBtn={true} title="返回">
         <h4 style={{ fontWeight: 700, lineHeight: '0.6rem', textAlign: 'center' }}>{name}</h4>
       </Header>
