@@ -1,3 +1,4 @@
+
 const shopList = [{
     name: '恐龙头套',
     img: 'https://s3.ax1x.com/2020/12/27/rIwRDU.jpg',
@@ -10,7 +11,7 @@ const shopList = [{
     comments: [
       {type: true, user: '极酷真品烟雨仔', comment: '超级好看超级暖和, 都给爷买!', feedback: '冲!'},
       {type: true, user: '温言恐龙(淡游)', comment: '祝恐龙们天天开心!', feedback: '[开心][开心][开心]'},
-      {type: true, user: 'nv色恐龙', comment: '买了我也能加恐龙群吗?', feedback: '不能!'},
+      {type: true, user: 'nv色恐龙', comment: '买了能加恐龙群吗?', feedback: '不能!'},
       {type: true, user: '恐龙坤坤', comment: '全世界最好的恐龙!', feedback: 'ohohoh!!!!'}
     ]
   },
@@ -24,8 +25,9 @@ const shopList = [{
     labels: ['网红产品', '七天无理由退款'],
     owner: {name: '恐龙温言', img: 'https://s3.ax1x.com/2020/12/27/rIwT81.jpg', grade: '4.6'},
     comments: [
-      {type: true, user: '恐龙坤坤', comment: '网红产品买来试试, 目前使用感觉良好, 祝店家生意兴隆!', feedback: '感谢这位亲的支持!'}
-
+      {type: true, user: '恐龙坤坤', comment: '网红产品买来试试, 目前使用感觉良好, 祝店家生意兴隆!', feedback: '感谢这位亲的支持!'},
+      {type: true, user: '烟雨恐龙', comment: '提问: 对阿乳使用该产品会发生什么?', feedback: '这位亲暂时还没有人试过呢!'},
+      {type: true, user: '匿名用户', comment: '对室友使用了该产品, 怎么变回来? 在线等, 挺急的. [笑哭]'}
     ]
   },
   {

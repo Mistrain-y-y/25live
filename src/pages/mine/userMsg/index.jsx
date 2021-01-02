@@ -15,8 +15,6 @@ const UserMsg = props => {
     // 展示用户完整信息需要重新请求
     props.loginActions.mineMsg()
     .then(res => {
-      console.log(res)
-      console.log(res.data)
       setMsg(res.data.msg)
       setIdentity(res.data.identity)
     })
@@ -24,7 +22,6 @@ const UserMsg = props => {
 
   const userLogOut = () => {
     sessionStorage.removeItem('token')
-    console.log(props.history)
     window.location.reload()// 刷新当前页面
   }
 

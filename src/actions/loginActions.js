@@ -26,7 +26,6 @@ export const loginRequest = (userData) => dispatch => {
       sessionStorage.setItem("token", token) // 保存 token 到 sessionStorage
       withToken(token)
       // 设置 token 到公共请求头, 让每次请求都携带这个请求头
-      console.log(jwtDecode(token))
       dispatch(changeToLogged(jwtDecode(token)))
       dispatch(changeToLoading())
     }, err => {
