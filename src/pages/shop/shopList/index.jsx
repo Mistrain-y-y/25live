@@ -4,15 +4,25 @@ import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import * as loginActions from '../../../actions/loginActions'
 import './style.less'
+import CollectBtn from './collectBtn'
 
 const ShopList = props => {
-  const toShopDetail = e => {
-    e.stopPropagation()
+
+  const toShopDetail = () => {
     if (props.login.logged) {
       props.history.push(`/shop/detail/${props.item.id}`)
     } else {// 没登录, 显示登录页面
       props.loginActions.showLoginPage()
     }
+  }
+
+  const collectTheItem = (username, id, e) => {// 点击增加收藏
+    e.stopPropagation()
+    props.loginActions.addCollect(username, id)
+      .then(res => {
+        props.clickShowAlert()
+        window.location.reload()// 收藏后需要刷新, 之后再优化
+      })
   }
 
   return (
@@ -30,19 +40,14 @@ const ShopList = props => {
           月售 <span>{props.item.count}</span> 件
          </p>
         <p className="btns">
-          {
-            props.collected.includes(props.item.id) ?
-              <button
-                className="btn btn-primary btn-collected"
-                onClick={props.clickShowAlert}
-              >已收藏</button> :
-              <button
-                className="btn btn-primary btn-collect"
-                onClick={props.clickShowAlert}
-              >收藏</button>
-          }
+          <CollectBtn
+           item={props.item}
+            collectTheItem={collectTheItem}
+            collected={props.collected}
+             />
 
-          <button className="btn btn-primary btn-detail"
+          <button
+            className="btn btn-primary btn-detail"
             onClick={toShopDetail}
           >查看详情</button>
         </p>

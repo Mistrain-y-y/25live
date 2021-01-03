@@ -7,15 +7,13 @@ import * as loginActions from '../../actions/loginActions'
 import { bindActionCreators } from 'redux'
 import './style.less'
 import Alert from './alert'
-import jwtDecode from 'jwt-decode'
 
 const Shop = props => {
   const [shopList, setShopList] = useState([])
   const [showAlert, setShowAlert] = useState(false)
   const [collected, setCollected] = useState([])
 
-  const clickShowAlert = e => {
-    e.stopPropagation()
+  const clickShowAlert = () => {
     if (props.login.logged) {
       setShowAlert(true)
     } else {
@@ -27,7 +25,7 @@ const Shop = props => {
     setShowAlert(false)
   }
 
-  useEffect(() => {// 一挂载就请求数据
+  useEffect(() => {// 一挂载就请求展示列表数据
     props.loginActions.shopList()
       .then(res => {
         setShopList(res.data)
@@ -35,16 +33,14 @@ const Shop = props => {
   }, [props.loginActions])
 
   useEffect(() => {
-    if(sessionStorage.getItem('token')) {
-      const {username} = jwtDecode(sessionStorage.getItem('token'))
+    const { username } = props.login.user
+    if (username) {// 请求用户收藏数据
       props.loginActions.collections(username)
-      .then(res => {
-        console.log(res.data)
-        setCollected(res.data.collectId)
-      })
+        .then(res => {
+          setCollected(res.data.collectId)
+        })
     }
-    
-  }, [props.loginActions])
+  }, [props.loginActions, props.login.user])
 
   return (
     <div className="shop-page">

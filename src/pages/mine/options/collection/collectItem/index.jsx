@@ -5,14 +5,16 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 
-const CollectItem = props => {
+const CollectItem = props => { 
   const [oneCollect, setOneCollect] = useState({})
+  
   useEffect(() => {
     props.loginActions.shopDetail(props.item)
       .then(res => {
         setOneCollect(res.data)
       })
   }, [props.loginActions, props.item])
+
   return (
     <div
       onClick={() => { props.history.push(`/shop/detail/${props.item}`) }}

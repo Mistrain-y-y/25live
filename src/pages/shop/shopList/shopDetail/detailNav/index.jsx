@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as loginActions from '../../../../../actions/loginActions'
 import Alert from '../../../alert'
+import NavCollectBtn from './navCollectBtn'
 
 const DetailNav = props => {
   const [showAlert, setShowAlert] = useState(false)
@@ -27,13 +28,9 @@ const DetailNav = props => {
         <span style={{ lineHeight: '1.1rem', margin: '0 0.3rem 0 0', color: '#aaa' }}>
           <span className="glyphicon glyphicon-earphone" aria-hidden="true"></span>
        客服</span>
-        <button className="btn btn-primary btn-collect">
-          <span
-            onClick={clickShowAlert}
-            className="glyphicon glyphicon-star-empty"
-            aria-hidden="true"
-            style={{ marginRight: '0.1rem' }}></span>
-        收藏</button>
+
+        <NavCollectBtn clickShowAlert={clickShowAlert}/>
+
         <button className="btn btn-primary btn-add">加入购物车</button>
       </div>
     </Fragment>

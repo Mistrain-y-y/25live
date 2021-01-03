@@ -3,7 +3,8 @@ import {
   CHANGE_TO_LOGGED,
   CHANGE_TO_LOADING,
   SHOW_LOGIN_PAGE,
-  HIDE_LOGIN_PAGE
+  HIDE_LOGIN_PAGE,
+  USER_COLLECTS
 } from '../constants'
 import withToken from '../utils/withToken'
 import jwtDecode from 'jwt-decode'
@@ -106,10 +107,32 @@ export const lifeList = () => dispatch => {
     })
 }
 
+// redux 保存用户收藏数据
+export const userCollects = (collectArr) => ({ 
+  type: USER_COLLECTS,
+  collectArr
+})
+
 // 请求 collection 数据
 export const collections = username => dispatch => {
   dispatch(changeToLoading())
   return axios.get(`/api/mine/collect/${username}`)
+    .then(res => {
+      dispatch(changeToLoading())
+      dispatch(userCollects(res.data.collectId))
+      return res
+    }, err => {
+      dispatch(changeToLoading())
+      return err
+    })
+}
+
+// 添加收藏商品
+export const addCollect = (username, id) => dispatch => {
+  dispatch(changeToLoading())
+  return axios.post(`/api/shop/collect`, {
+    username, id
+  })
     .then(res => {
       dispatch(changeToLoading())
       return res

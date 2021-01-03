@@ -7,6 +7,7 @@ const NotLogged = props => {
   const showLogin = () => {
     props.loginActions.showLoginPage()
   }
+  
   return (
     <div className="img-media">
       <div className="media-middle"

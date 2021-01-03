@@ -10,7 +10,6 @@ err => console.log(err, '数据库连接失败!'))
 // 创建集合规则
 const collectSchema = new mongoose.Schema({
   name: String,
-  user: String,
   collectId: Array
 })
 
