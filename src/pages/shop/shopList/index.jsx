@@ -8,7 +8,8 @@ import CollectBtn from './collectBtn'
 
 const ShopList = props => {
 
-  const toShopDetail = () => {
+  const toShopDetail = e => {
+    e.stopPropagation()
     if (props.login.logged) {
       props.history.push(`/shop/detail/${props.item.id}`)
     } else {// 没登录, 显示登录页面
