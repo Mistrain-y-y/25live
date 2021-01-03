@@ -9,7 +9,7 @@
 
 #### database
 
-mongodb 数据库, 只负责登录功能
+mongodb 数据库, 用户名和昵称都是唯一的
 
 #### data
 

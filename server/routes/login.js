@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router() // 创建路由
-const User = require('../database/database')
+const User = require('../database/user')
 const jwt = require('jsonwebtoken')
 const config = require('../config')
 
@@ -12,10 +12,9 @@ router.post('/', (req, res) => {
   })
   .then(data => {
     if (data) {// 查找到数据, 登陆成功
-      console.log(data)
-      const { user, img, id} = data
+      const { user, img, id, username} = data
       const token = jwt.sign({// 生成 token
-        user, id, img
+        user, id, img, username
       }, config.jwtSecret)// 参数2是自定义的字符串
       res.send(token)
     } else {// 没有查找到

@@ -1,10 +1,15 @@
 import React from 'react'
 import './style.less'
+import { withRouter } from 'react-router-dom'
 
-const Options = () => {
+const Options = props => {
+  const toCollection = () => {
+    props.history.push('/mine/collection')
+  }
   return (
     <div className="mine-options">
       <div
+        onClick={toCollection}
         className="thumbnail mine-option"
         style={{
           display: 'inline-block',
@@ -45,4 +50,4 @@ const Options = () => {
   )
 }
 
-export default Options
+export default withRouter(Options)

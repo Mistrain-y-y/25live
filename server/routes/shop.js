@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const shopList = require('../data/shopList')
 const jwtDecode = require('jwt-decode')
-const User = require('../database/database')
+const User = require('../database/user')
 
 router.get('/', (req, res) => {
   res.send(shopList)
@@ -22,7 +22,6 @@ router.get('/detail/:id', (req, res) => {
       })
       .then(data => {
         if (data) { //允许访问, 返回数据
-          console.log(data)
           const detail = req.params.id
           const arr = shopList.filter(item => item.id === detail)
           res.send(arr[0]) // 返回 shopList 里面的某一个

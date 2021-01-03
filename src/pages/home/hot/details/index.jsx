@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import Header from '../../../../components/header'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as loginActions from '../../../../actions/loginActions'
+import './style.less'
 
 const Details = props => {
   const [detail, setDetail] = useState({})
@@ -22,17 +23,17 @@ const Details = props => {
   }, [props.loginActions, props.match.params.name, props.history])
 
   return (
-    <div>
+    <Fragment>
       <Header title="返回" showBackBtn={true} >
       <h4 style={{fontWeight: 700, lineHeight: '0.6rem', textAlign: 'center'}}>{props.match.params.name}</h4>
         </Header>
-      <div className="panel panel-default" style={{ marginTop: '59px' }}>
+      <div className="panel panel-default panel-detail" style={{ marginTop: '59px' }}>
         <img src={detail.img} alt="img" style={{ width: '100%' }} />
         <div className="panel-body">
           <p>{detail.content}</p>
         </div>
       </div>
-    </div>
+    </Fragment>
   )
 }
 

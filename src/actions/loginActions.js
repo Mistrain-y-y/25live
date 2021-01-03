@@ -97,11 +97,24 @@ export const mineMsg = () => dispatch => {
 export const lifeList = () => dispatch => {
   dispatch(changeToLoading())
   return axios.get('/api/life')
-  .then(res => {
-    dispatch(changeToLoading())
-    return res
-  }, err => {
-    dispatch(changeToLoading())
-    return err
-  })
+    .then(res => {
+      dispatch(changeToLoading())
+      return res
+    }, err => {
+      dispatch(changeToLoading())
+      return err
+    })
+}
+
+// 请求 collection 数据
+export const collections = username => dispatch => {
+  dispatch(changeToLoading())
+  return axios.get(`/api/mine/collect/${username}`)
+    .then(res => {
+      dispatch(changeToLoading())
+      return res
+    }, err => {
+      dispatch(changeToLoading())
+      return err
+    })
 }

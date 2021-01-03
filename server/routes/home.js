@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router() // 创建路由
 const homeList = require('../data/homeList')
 const jwtDecode = require('jwt-decode')
-const User = require('../database/database')
+const User = require('../database/user')
 
 router.get('/', (req, res) => {
   res.send(homeList)
@@ -22,7 +22,6 @@ router.get('/:name', (req, res) => {
       })
       .then(data => {
         if (data) {// 数据库中有数据, 允许访问, 返回数据
-          console.log(data)
           const detail = req.params.name
           const arr = homeList.filter(item => item.name === detail)
           res.send(arr[0])

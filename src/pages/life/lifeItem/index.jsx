@@ -2,9 +2,8 @@ import React, { Fragment } from 'react'
 import './style.less'
 
 const LifeItem = props => {
-
-  console.log(props)
   const { name, time, likes, iconImg, content, comments } = props.item
+  
   return (
     <div className="panel panel-default item-life" style={{ marginTop: '59px' }}>
       <div>

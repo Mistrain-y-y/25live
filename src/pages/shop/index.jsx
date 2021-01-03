@@ -7,10 +7,12 @@ import * as loginActions from '../../actions/loginActions'
 import { bindActionCreators } from 'redux'
 import './style.less'
 import Alert from './alert'
+import jwtDecode from 'jwt-decode'
 
 const Shop = props => {
   const [shopList, setShopList] = useState([])
   const [showAlert, setShowAlert] = useState(false)
+  const [collected, setCollected] = useState([])
 
   const clickShowAlert = e => {
     e.stopPropagation()
@@ -32,21 +34,37 @@ const Shop = props => {
       }, err => console.log(err))
   }, [props.loginActions])
 
+  useEffect(() => {
+    if(sessionStorage.getItem('token')) {
+      const {username} = jwtDecode(sessionStorage.getItem('token'))
+      props.loginActions.collections(username)
+      .then(res => {
+        console.log(res.data)
+        setCollected(res.data.collectId)
+      })
+    }
+    
+  }, [props.loginActions])
+
   return (
     <div className="shop-page">
-      <Header title="Shop" showLoginBtn={true}/>
+      <Header title="Shop" showLoginBtn={true} />
       <FootNav />
 
       <div className="container shop-container"
-        style={{ padding: '59px .1rem .1rem 0'}}>
+        style={{ padding: '59px .1rem .1rem 0' }}>
 
         {
-          showAlert ? <Alert hideAlert={hideAlert}/> : null
+          showAlert ? <Alert hideAlert={hideAlert} /> : null
         }
 
         {
           shopList.map((item, index) => (
-            <ShopList item={item} key={index} clickShowAlert={clickShowAlert} />
+            <ShopList item={item}
+              key={index}
+              clickShowAlert={clickShowAlert}
+              collected={collected}
+            />
           ))
         }
 
