@@ -12,6 +12,7 @@ const CollectItem = props => {
     props.loginActions.shopDetail(props.item)
       .then(res => {
         setOneCollect(res.data)
+        props.loginActions.changeToLoaded()
       })
   }, [props.loginActions, props.item])
 

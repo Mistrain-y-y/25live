@@ -15,6 +15,8 @@ const Collection = props => {
     props.loginActions.collections(username)
       .then(res => {
         setList(res.data.collectId)
+        props.loginActions.changeToLoaded()
+        props.loginActions.changeToLoaded()
       })
   }, [props.loginActions])
 

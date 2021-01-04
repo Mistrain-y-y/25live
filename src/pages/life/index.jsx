@@ -13,6 +13,7 @@ const Life = props => {
     props.loginActions.lifeList()
       .then(res => {
         setList(res.data)
+        props.loginActions.changeToLoaded()
       })
   }, [props.loginActions])
   return (

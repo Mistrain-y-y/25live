@@ -17,6 +17,7 @@ const UserMsg = props => {
     .then(res => {
       setMsg(res.data.msg)
       setIdentity(res.data.identity)
+      props.loginActions.changeToLoaded()
     })
   }, [props.loginActions])
 

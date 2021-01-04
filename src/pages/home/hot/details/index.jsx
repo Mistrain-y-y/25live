@@ -12,12 +12,12 @@ const Details = props => {
   useEffect(() => {
     props.loginActions.detailRequest(props.match.params.name)
       .then(res => {
-        console.log(res)
         setDetail(res.data)
+        props.loginActions.changeToLoaded()
       }, err => {// 没有登录, 跳转到登录页面
-        console.log(err)
         props.history.replace('/home')
         props.loginActions.showLoginPage()
+        props.loginActions.changeToLoaded()
       }
       )
   }, [props.loginActions, props.match.params.name, props.history])

@@ -29,16 +29,20 @@ const Shop = props => {
     props.loginActions.shopList()
       .then(res => {
         setShopList(res.data)
+        props.loginActions.changeToLoaded()
       }, err => console.log(err))
   }, [props.loginActions])
 
   useEffect(() => {
-    const { username } = props.login.user
-    if (username) {// 请求用户收藏数据
-      props.loginActions.collections(username)
-        .then(res => {
-          setCollected(res.data.collectId)
-        })
+    if (props.login.logged) {
+      const { username } = props.login.user
+      if (username) {// 请求用户收藏数据
+        props.loginActions.collections(username)
+          .then(res => {
+            setCollected(res.data.collectId)
+            props.loginActions.changeToLoaded()
+          })
+      }
     }
   }, [props.loginActions, props.login.user])
 

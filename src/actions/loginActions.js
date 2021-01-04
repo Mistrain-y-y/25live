@@ -4,7 +4,8 @@ import {
   CHANGE_TO_LOADING,
   SHOW_LOGIN_PAGE,
   HIDE_LOGIN_PAGE,
-  USER_COLLECTS
+  USER_COLLECTS,
+  CHANGE_TO_LOADED
 } from '../constants'
 import withToken from '../utils/withToken'
 import jwtDecode from 'jwt-decode'
@@ -14,9 +15,17 @@ export const changeToLogged = userData => ({
   userData
 })
 
+// loading
 export const changeToLoading = () => ({
   type: CHANGE_TO_LOADING
 })
+
+// loaded
+export const changeToLoaded = () => dispatch => (
+  dispatch({
+    type: CHANGE_TO_LOADED
+  })
+)
 
 // 登录请求
 export const loginRequest = (userData) => dispatch => {
@@ -28,9 +37,20 @@ export const loginRequest = (userData) => dispatch => {
       withToken(token)
       // 设置 token 到公共请求头, 让每次请求都携带这个请求头
       dispatch(changeToLogged(jwtDecode(token)))
-      dispatch(changeToLoading())
     }, err => {
-      dispatch(changeToLoading())
+      return err
+    })
+}
+
+// 请求 home 首页数据
+export const homeData = () => dispatch => {
+  dispatch(changeToLoading())
+  return axios.get('/api/home')
+    .then(res => {
+      console.log('hhh')
+      return res
+    }, err => {
+      return err
     })
 }
 
@@ -39,10 +59,8 @@ export const detailRequest = name => dispatch => {
   dispatch(changeToLoading())
   return axios.get(`/api/home/${name}`)
     .then(res => {
-      dispatch(changeToLoading())
       return res
     }, err => {
-      dispatch(changeToLoading())
       return err
     })
 }
@@ -60,10 +78,8 @@ export const shopList = () => dispatch => {
   dispatch(changeToLoading())
   return axios.get('/api/shop')
     .then(res => {
-      dispatch(changeToLoading())
       return res
     }, err => {
-      dispatch(changeToLoading())
       return err
     })
 }
@@ -73,10 +89,8 @@ export const shopDetail = id => dispatch => {
   dispatch(changeToLoading())
   return axios.get(`/api/shop/detail/${id}`)
     .then(res => {
-      dispatch(changeToLoading())
       return res
     }, err => {
-      dispatch(changeToLoading())
       return err
     })
 }
@@ -86,10 +100,8 @@ export const mineMsg = () => dispatch => {
   dispatch(changeToLoading())
   return axios.get(`/api/mine`)
     .then(res => {
-      dispatch(changeToLoading())
       return res
     }, err => {
-      dispatch(changeToLoading())
       return err
     })
 }
@@ -99,16 +111,14 @@ export const lifeList = () => dispatch => {
   dispatch(changeToLoading())
   return axios.get('/api/life')
     .then(res => {
-      dispatch(changeToLoading())
       return res
     }, err => {
-      dispatch(changeToLoading())
       return err
     })
 }
 
 // redux 保存用户收藏数据
-export const userCollects = (collectArr) => ({ 
+export const userCollects = (collectArr) => ({
   type: USER_COLLECTS,
   collectArr
 })
@@ -118,11 +128,9 @@ export const collections = username => dispatch => {
   dispatch(changeToLoading())
   return axios.get(`/api/mine/collect/${username}`)
     .then(res => {
-      dispatch(changeToLoading())
       dispatch(userCollects(res.data.collectId))
       return res
     }, err => {
-      dispatch(changeToLoading())
       return err
     })
 }
@@ -131,13 +139,12 @@ export const collections = username => dispatch => {
 export const addCollect = (username, id) => dispatch => {
   dispatch(changeToLoading())
   return axios.post(`/api/shop/collect`, {
-    username, id
-  })
+      username,
+      id
+    })
     .then(res => {
-      dispatch(changeToLoading())
       return res
     }, err => {
-      dispatch(changeToLoading())
       return err
     })
 }

@@ -29,7 +29,11 @@ const ShopDetail = props => {
         setLabels(res.data.labels)
         setOwner(res.data.owner)
         setComments(res.data.comments)
-      }, err => console.log(err))
+        props.loginActions.changeToLoaded()
+      }, err => {
+        console.log(err)
+        props.loginActions.changeToLoaded()
+      })
   }, [props.loginActions, id])
 
   return (
@@ -37,7 +41,7 @@ const ShopDetail = props => {
       <Header showBackBtn={true} title="返回">
         <h4 style={{ fontWeight: 700, lineHeight: '0.6rem', textAlign: 'center' }}>{name}</h4>
       </Header>
-      <DetailNav/>
+      <DetailNav />
 
       <div className="panel panel-default" style={{ marginTop: '59px' }}>
         <img src={img} alt="img" style={{ width: '100%' }} />
@@ -75,7 +79,7 @@ const ShopDetail = props => {
                     {
                       item.type ? <span key={index} className="comment-label">好评</span> :
                         <span key={index} className="comment-label"
-                        style={{backgroundColor: '#eee', color: '#999'}}
+                          style={{ backgroundColor: '#eee', color: '#999' }}
                         >差评</span>
                     }
                     <span style={{ color: '#aaa' }}>用户 {item.user} : </span>

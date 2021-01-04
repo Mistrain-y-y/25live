@@ -14,7 +14,6 @@ import banner5 from '../../static/images/05.jpg'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Hot from './hot'
-import api from '../../api'
 import './style.less'
 import SearchInput from '../../components/searchInput'
 
@@ -22,12 +21,10 @@ const Home = props => {
   const [homeList, setHomeList] = useState([])
 
   useEffect(() => {// 一挂载就请求数据
-    props.loginActions.changeToLoading()
-      api.homeHot.homeHotData()
-      .then(res => res.json(), err => console.log(err))
-      .then(data => {
-        setHomeList(data)
-        props.loginActions.changeToLoading()
+    props.loginActions.homeData()
+      .then(res => {
+        setHomeList(res.data)
+        props.loginActions.changeToLoaded()
       })
   }, [props.loginActions])
 
