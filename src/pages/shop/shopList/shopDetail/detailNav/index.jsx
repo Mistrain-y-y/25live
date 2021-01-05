@@ -3,24 +3,31 @@ import './style.less'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as loginActions from '../../../../../actions/loginActions'
-import Alert from '../../../alert/successCollect'
+import SuccessAlert from '../../../../../components/alert/successCollect'
+import CancelAlert from '../../../../../components/alert/cancelCollect'
 import NavCollectBtn from './navCollectBtn'
 
 const DetailNav = props => {
-  const [showAlert, setShowAlert] = useState(false)
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false)
+  const [showCancelAlert, setShowCancelAlert] = useState(false)
 
-  const clickShowAlert = () => {
-    setShowAlert(true)
+  const clickShowSuccessAlert = () => {
+    setShowSuccessAlert(true)
   }
 
   const hideAlert = () => {
-    setShowAlert(false)
+    setShowSuccessAlert(false)
+    setShowCancelAlert(false)
   }
 
   return (
     <Fragment>
       {
-        showAlert ? <Alert hideAlert={hideAlert} /> : null
+        showSuccessAlert ? <SuccessAlert hideAlert={hideAlert} /> : null
+      }
+
+      {
+        showCancelAlert ? <CancelAlert hideAlert={hideAlert}/> : null
       }
 
       <div className="navbar navbar-footer nav-detail" style={{ marginBottom: 0 }}>
@@ -29,7 +36,7 @@ const DetailNav = props => {
           <span className="glyphicon glyphicon-earphone" aria-hidden="true"></span>
        客服</span>
 
-        <NavCollectBtn clickShowAlert={clickShowAlert}/>
+        <NavCollectBtn clickShowAlert={clickShowSuccessAlert}/>
 
         <button className="btn btn-primary btn-add">加入购物车</button>
       </div>

@@ -6,8 +6,8 @@ import { connect } from 'react-redux'
 import * as loginActions from '../../actions/loginActions'
 import { bindActionCreators } from 'redux'
 import './style.less'
-import SuccessAlert from './alert/successCollect'
-import CancelAlert from './alert/cancelCollect'
+import SuccessAlert from './../../components/alert/successCollect'
+import CancelAlert from './../../components/alert/cancelCollect'
 
 const Shop = props => {
   const [shopList, setShopList] = useState([])

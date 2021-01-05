@@ -14,7 +14,8 @@ const NavCollectBtn = props => {
     <Fragment>
       {
         array.includes(id) ?
-          <button className="btn btn-primary btn-collected">
+          <button className="btn btn-primary btn-collected"
+          style={{backgroundColor: 'rgba(249, 125, 147, 0.6)'}}>
             <span
               onClick={props.clickShowAlert}
               className="glyphicon glyphicon-star-empty"
