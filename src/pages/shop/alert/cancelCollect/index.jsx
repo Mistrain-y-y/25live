@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import './style.less'
 
-const Alert = props => {
+const CancelAlert = props => {
   useEffect(() => {
     const timer = setTimeout(() => {// 挂载以后3秒卸载
       props.hideAlert()
@@ -18,9 +18,9 @@ const Alert = props => {
     >
       <span
         className="glyphicon glyphicon-ok"></span>
-        收藏成功!
+        已取消收藏!
     </div>
   )
 }
 
-export default Alert
+export default CancelAlert

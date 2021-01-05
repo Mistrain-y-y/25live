@@ -1,0 +1,28 @@
+.shop-success {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  border: none;
+  border-radius: 0 0 0 1px #e1e1e1;
+  box-shadow: 0 0 5px 1px #e1e1e1;
+  color: #666;
+  background-color: #fff;
+  font-size: 0.3rem;
+  span {
+    color: #fa899d;
+    margin-right: 0.2rem;
+  }
+
+  transform: translate(-50%, -50%);
+  animation: hide 0.5s linear 1.5s forwards;
+
+  @keyframes hide {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+}

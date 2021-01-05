@@ -21,8 +21,17 @@ const ShopList = props => {
     e.stopPropagation()
     props.loginActions.addCollect(username, id)
       .then(res => {
-        props.clickShowAlert()
-        window.location.reload()// 收藏后需要刷新, 之后再优化
+        props.clickShowSuccessAlert()
+        props.loginActions.changeToLoaded()
+      })
+  }
+
+  const cancelCollect = (username, id, e) => {// 点击取消收藏
+    e.stopPropagation()
+    props.loginActions.cancelCollect(username, id)
+      .then(res => {
+        props.clickShowCancelAlert()
+        props.loginActions.changeToLoaded()
       })
   }
 
@@ -42,10 +51,10 @@ const ShopList = props => {
          </p>
         <p className="btns">
           <CollectBtn
-           item={props.item}
+            item={props.item}
             collectTheItem={collectTheItem}
-            collected={props.collected}
-             />
+            cancelCollect={cancelCollect}
+          />
 
           <button
             className="btn btn-primary btn-detail"

@@ -57,13 +57,38 @@ router.post('/collect', (req, res) => {
               name: username
             })
             .then(data => {
-              console.log(data)
               res.send(data)
             })
         })
     })
+})
 
+router.post('/cancel', (req, res) => {
+  const {
+    id,
+    username
+  } = req.body
 
+  Collect.findOne({
+      name: username
+    })
+    .then(data => {
+      const newArr = data.collectId.filter(item => item !== id)
+      Collect.updateOne({
+          name: username // 查询条件
+        }, {
+          collectId: newArr // 更新的数据
+        })
+        .then(() => {
+          // 返回更新后的数据
+          Collect.findOne({
+              name: username
+            })
+            .then(data => {
+              res.send(data)
+            })
+        })
+    })
 })
 
 module.exports = router

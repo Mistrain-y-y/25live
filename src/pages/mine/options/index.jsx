@@ -1,10 +1,18 @@
 import React from 'react'
 import './style.less'
 import { withRouter } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as loginActions from '../../../actions/loginActions'
 
 const Options = props => {
   const toCollection = () => {
-    props.history.push('/mine/collection')
+    // 判断是否登录
+    if (props.login.logged) {
+      props.history.push('/mine/collection')
+    } else {// 跳转到登录界面
+      props.loginActions.showLoginPage()
+    }
   }
   return (
     <div className="mine-options">
@@ -49,5 +57,8 @@ const Options = props => {
 
   )
 }
+const mapDispatchToProps = dispatch => ({
+  loginActions: bindActionCreators(loginActions, dispatch)
+})
 
-export default withRouter(Options)
+export default connect(state => state, mapDispatchToProps)(withRouter(Options))

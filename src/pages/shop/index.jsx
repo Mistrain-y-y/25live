@@ -6,23 +6,30 @@ import { connect } from 'react-redux'
 import * as loginActions from '../../actions/loginActions'
 import { bindActionCreators } from 'redux'
 import './style.less'
-import Alert from './alert'
+import SuccessAlert from './alert/successCollect'
+import CancelAlert from './alert/cancelCollect'
 
 const Shop = props => {
   const [shopList, setShopList] = useState([])
-  const [showAlert, setShowAlert] = useState(false)
-  const [collected, setCollected] = useState([])
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false)
+  const [showCancelAlert, setShowCancelAlert] = useState(false)
 
-  const clickShowAlert = () => {
+  const clickShowSuccessAlert = () => {
     if (props.login.logged) {
-      setShowAlert(true)
+      setShowSuccessAlert(true)
     } else {
       props.loginActions.showLoginPage()
     }
   }
 
+  const clickShowCancelAlert = () => {
+    // 只有登陆了才会出现 已收藏 按钮, 因此不用判断是否登录
+    setShowCancelAlert(true)
+  }
+
   const hideAlert = () => {
-    setShowAlert(false)
+    setShowSuccessAlert(false)
+    setShowCancelAlert(false)
   }
 
   useEffect(() => {// 一挂载就请求展示列表数据
@@ -39,12 +46,11 @@ const Shop = props => {
       if (username) {// 请求用户收藏数据
         props.loginActions.collections(username)
           .then(res => {
-            setCollected(res.data.collectId)
             props.loginActions.changeToLoaded()
           })
       }
     }
-  }, [props.loginActions, props.login.user])
+  }, [props.loginActions, props.login])
 
   return (
     <div className="shop-page">
@@ -55,15 +61,19 @@ const Shop = props => {
         style={{ padding: '59px .1rem .1rem 0' }}>
 
         {
-          showAlert ? <Alert hideAlert={hideAlert} /> : null
+          showSuccessAlert ? <SuccessAlert hideAlert={hideAlert} /> : null
+        }
+
+        {
+          showCancelAlert ? <CancelAlert hideAlert={hideAlert} /> : null
         }
 
         {
           shopList.map((item, index) => (
             <ShopList item={item}
               key={index}
-              clickShowAlert={clickShowAlert}
-              collected={collected}
+              clickShowSuccessAlert={clickShowSuccessAlert}
+              clickShowCancelAlert={clickShowCancelAlert}
             />
           ))
         }

@@ -21,11 +21,9 @@ export const changeToLoading = () => ({
 })
 
 // loaded
-export const changeToLoaded = () => dispatch => (
-  dispatch({
-    type: CHANGE_TO_LOADED
-  })
-)
+export const changeToLoaded = () => ({
+  type: CHANGE_TO_LOADED
+})
 
 // 登录请求
 export const loginRequest = (userData) => dispatch => {
@@ -128,7 +126,7 @@ export const collections = username => dispatch => {
   dispatch(changeToLoading())
   return axios.get(`/api/mine/collect/${username}`)
     .then(res => {
-      dispatch(userCollects(res.data.collectId))
+      dispatch(userCollects(res.data.collectId))// 保存到 redux
       return res
     }, err => {
       return err
@@ -143,6 +141,22 @@ export const addCollect = (username, id) => dispatch => {
       id
     })
     .then(res => {
+      dispatch(userCollects(res.data.collectId))// 更新 redux 状态
+      return res
+    }, err => {
+      return err
+    })
+}
+
+// 取消收藏
+export const cancelCollect = (username, id) => dispatch => {
+  dispatch(changeToLoading())
+  return axios.post(`/api/shop/cancel`, {
+      username,
+      id
+    })
+    .then(res => {
+      dispatch(userCollects(res.data.collectId))// 更新 redux 状态
       return res
     }, err => {
       return err

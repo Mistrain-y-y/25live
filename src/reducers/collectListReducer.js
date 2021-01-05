@@ -6,7 +6,7 @@ const loadingReducer = (state = []
 , action) => {
   switch (action.type) {
     case USER_COLLECTS:
-      return [action.collectArr]
+      return action.collectArr
       default:
         return state
   }

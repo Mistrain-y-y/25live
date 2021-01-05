@@ -3,7 +3,7 @@ import './style.less'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as loginActions from '../../../../../actions/loginActions'
-import Alert from '../../../alert'
+import Alert from '../../../alert/successCollect'
 import NavCollectBtn from './navCollectBtn'
 
 const DetailNav = props => {
