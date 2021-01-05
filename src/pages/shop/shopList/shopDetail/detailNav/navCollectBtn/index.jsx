@@ -1,31 +1,68 @@
-import React, { Fragment} from 'react'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import React, { useState, Fragment, useEffect } from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import SuccessAlert from '../../../../../../components/alert/successCollect'
+import CancelAlert from '../../../../../../components/alert/cancelCollect'
+import { bindActionCreators } from 'redux'
+import * as loginActions from '../../../../../../actions/loginActions'
 
 const NavCollectBtn = props => {
+  const [collect, setCollect] = useState([])
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false)
+  const [showCancelAlert, setShowCancelAlert] = useState(false)
+
+  useEffect(() => {
+    setCollect(props.collect)
+  }, [props.collect])
+
   const id = props.location.pathname.slice(-2)
 
-  const array = props.collect
+  const addCollect = e => {
+    e.stopPropagation()
+    props.loginActions.addCollect(props.login.user.username, id)
+      .then(() => {
+        setShowSuccessAlert(true)
+        props.loginActions.changeToLoaded()
+      })
+  }
 
-  console.log(array.includes(id))
-  // -------------不知道为什么总是判断 false---------------
+  const cancelCollect = () => {
+    props.loginActions.cancelCollect(props.login.user.username, id)
+      .then(() => {
+        setShowCancelAlert(true)
+        props.loginActions.changeToLoaded()
+      })
+  }
+
+  const hideAlert = () => {
+    setShowSuccessAlert(false)
+    setShowCancelAlert(false)
+  }
 
   return (
     <Fragment>
       {
-        array.includes(id) ?
+        showSuccessAlert ? <SuccessAlert hideAlert={hideAlert} /> : null
+      }
+
+      {
+        showCancelAlert ? <CancelAlert hideAlert={hideAlert} /> : null
+      }
+
+      {
+        collect.includes(id) ?
           <button className="btn btn-primary btn-collected"
-          style={{backgroundColor: 'rgba(249, 125, 147, 0.6)'}}>
+          onClick={cancelCollect}
+            style={{ backgroundColor: 'rgba(249, 125, 147, 0.6)' }}>
             <span
-              onClick={props.clickShowAlert}
               className="glyphicon glyphicon-star-empty"
               aria-hidden="true"
               style={{ marginRight: '0.1rem' }}></span>
         已收藏</button>
           :
-          <button className="btn btn-primary btn-collect">
+          <button className="btn btn-primary btn-collect"
+          onClick={addCollect}>
             <span
-              onClick={props.clickShowAlert}
               className="glyphicon glyphicon-star-empty"
               aria-hidden="true"
               style={{ marginRight: '0.1rem' }}></span>
@@ -35,4 +72,8 @@ const NavCollectBtn = props => {
   )
 }
 
-export default connect(state => state)(withRouter(NavCollectBtn))
+const mapDispatchToProps = dispatch => ({
+  loginActions: bindActionCreators(loginActions, dispatch)
+})
+
+export default connect(state => state, mapDispatchToProps)(withRouter(NavCollectBtn))
