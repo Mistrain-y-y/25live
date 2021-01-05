@@ -32,8 +32,10 @@ const Login = props => {
           if (sessionStorage.getItem('token')) {
             setFailedMsg('')
             props.closeLogin()// 关闭登录框
+            props.loginActions.changeToLoaded()
           } else {
             setFailedMsg('用户名或密码错误!')
+            props.loginActions.changeToLoaded()
           }
         })
     }
