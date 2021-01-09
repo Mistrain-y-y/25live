@@ -30,11 +30,11 @@ const Set = props => {
         <div className="input-item" onClick={() => toResetPage('修改头像')}>
           <img src={info.img} alt="img" className="user-img"/>
         </div>
-        <div className="input-item"  onClick={() => toResetPage('账号')}>
+        <div className="input-item"  onClick={() => toResetPage('修改账号')}>
           账号 <p>{info.username}</p>
         </div>
-        <div className="input-item"  onClick={() => toResetPage('用户名')}>
-          用户名 <p>{info.username}</p>
+        <div className="input-item"  onClick={() => toResetPage('修改用户名')}>
+          用户名 <p>{info.user}</p>
         </div>
         <div className="input-item"  onClick={() => toResetPage('个性签名')}>
           个性签名 <p>{info.identity}</p>
