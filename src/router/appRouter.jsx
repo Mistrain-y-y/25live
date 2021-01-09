@@ -15,6 +15,7 @@ const ShopDetail = lazy(() => import('../pages/shop/shopList/shopDetail'))
 const Life = lazy(() => import('../pages/life'))
 const Mine = lazy(() => import('../pages/mine'))
 const Collection = lazy(() => import('../pages/mine/options/collection'))
+const Reset = lazy(() => import('../pages/mine/options/set/reset'))
 const Set = lazy(() => import('../pages/mine/options/set'))
 const NotFound = lazy(() => import('../pages/notFound'))
 
@@ -34,6 +35,7 @@ const AppRouter = () => {
           <Route path="/life" exact component={Life} />
           <Route path="/mine" exact component={Mine} />
           <Route path="/mine/collection" exact component={Collection} />
+          <Route path="/mine/reset/:property" exact component={Reset}/>
           <Route path="/mine/set" exact component={Set} />
           <Route path="/search" exact component={Search} />
           <Route path="/*" component={NotFound} />
