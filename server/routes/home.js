@@ -4,10 +4,12 @@ const homeList = require('../data/homeList')
 const jwtDecode = require('jwt-decode')
 const User = require('../database/user')
 
+// home 页面展示列表
 router.get('/', (req, res) => {
   res.send(homeList)
 })
 
+// home 详情页面
 router.get('/:name', (req, res) => {
   // 验证 token
   if (req.headers.authorization) {

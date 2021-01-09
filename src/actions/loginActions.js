@@ -136,7 +136,7 @@ export const collections = username => dispatch => {
 // 添加收藏商品
 export const addCollect = (username, id) => dispatch => {
   dispatch(changeToLoading())
-  return axios.post(`/api/shop/collect`, {
+  return axios.put(`/api/shop/collect`, {
       username,
       id
     })
@@ -151,7 +151,7 @@ export const addCollect = (username, id) => dispatch => {
 // 取消收藏
 export const cancelCollect = (username, id) => dispatch => {
   dispatch(changeToLoading())
-  return axios.post(`/api/shop/cancel`, {
+  return axios.put(`/api/shop/cancel`, {
       username,
       id
     })

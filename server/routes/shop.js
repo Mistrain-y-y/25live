@@ -5,10 +5,12 @@ const jwtDecode = require('jwt-decode')
 const User = require('../database/user')
 const Collect = require('../database/collect')
 
+// 请求 shop 展示列表
 router.get('/', (req, res) => {
   res.send(shopList)
 })
 
+// 请求详情数据
 router.get('/detail/:id', (req, res) => {
   // 验证 token
   if (req.headers.authorization) {
@@ -36,7 +38,7 @@ router.get('/detail/:id', (req, res) => {
 })
 
 // 用户点击收藏, 添加 id 到数据库
-router.post('/collect', (req, res) => {
+router.put('/collect', (req, res) => {
   const {
     id,
     username
@@ -63,7 +65,8 @@ router.post('/collect', (req, res) => {
     })
 })
 
-router.post('/cancel', (req, res) => {
+// 取消收藏
+router.put('/cancel', (req, res) => {
   const {
     id,
     username

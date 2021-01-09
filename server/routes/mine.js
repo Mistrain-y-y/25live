@@ -25,6 +25,7 @@ router.get('/', (req, res) => {
   }
 })
 
+// 请求展示用户的收藏数据
 router.get('/collect/:username', (req, res) => {
   const {
     username

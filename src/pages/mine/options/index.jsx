@@ -14,6 +14,13 @@ const Options = props => {
       props.loginActions.showLoginPage()
     }
   }
+  const toSetPage = () => {
+    if (props.login.logged) {
+      props.history.push('/mine/set')
+    } else {// 跳转到登录界面
+      props.loginActions.showLoginPage()
+    }
+  }
   return (
     <div className="mine-options">
       <div
@@ -45,6 +52,7 @@ const Options = props => {
         其他
       </div>
       <div
+        onClick={toSetPage}
         className="thumbnail mine-option"
         style={{
           display: 'inline-block',

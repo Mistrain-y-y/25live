@@ -25,13 +25,18 @@ const Details = props => {
   return (
     <Fragment>
       <Header title="返回" showBackBtn={true} >
-      <h4 style={{fontWeight: 700, lineHeight: '0.6rem', textAlign: 'center'}}>{props.match.params.name}</h4>
-        </Header>
+        <h4 style={{ fontWeight: 700, lineHeight: '0.6rem', textAlign: 'center' }}>{props.match.params.name}</h4>
+      </Header>
       <div className="panel panel-default panel-detail" style={{ marginTop: '59px' }}>
         <img src={detail.img} alt="img" style={{ width: '100%' }} />
         <div className="panel-body">
           <p>{detail.content}</p>
         </div>
+        <p className="icon-box">
+          <span className="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+          <span className="glyphicon glyphicon-comment" aria-hidden="true"></span>
+          <span className="glyphicon glyphicon-share" aria-hidden="true"></span>
+        </p>
       </div>
     </Fragment>
   )

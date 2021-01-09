@@ -4,6 +4,7 @@ const User = require('../database/user')
 const jwt = require('jsonwebtoken')
 const config = require('../config')
 
+// 登录请求
 router.post('/', (req, res) => {
   const {username, password} = req.body
   // 在数据库中验证 username 和 password
