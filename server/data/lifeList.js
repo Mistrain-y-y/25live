@@ -1,8 +1,25 @@
 const lifeList = [
   {
+    name: '烟雨恐龙',
+    iconImg: 'https://s3.ax1x.com/2020/12/27/rIwRDU.jpg',
+    time: '3月29日 20：48',
+    content: {
+      text: '欢迎恐龙新成员灵梦！'
+    },
+    likes: [
+      '烟雨恐龙', '温言恐龙', '坤坤恐龙', '灵梦恐龙', '莫莫', '粽子恐龙'
+    ],
+    comments: [{
+        user: '莫莫',
+        content: '为什么我没有进？！',
+        feedback: '可以明年再来。'
+      }
+    ]
+  },
+  {
     name: '粽子恐龙',
     iconImg: 'https://s3.ax1x.com/2020/12/27/rIw7gx.jpg',
-    time: '昨天 20:42',
+    time: '1月8日 20:42',
     content: {
       text: '恭喜烟雨放假回家~'
     },
@@ -50,7 +67,7 @@ const lifeList = [
   },{
     name: '乌云',
     iconImg: 'https://s3.ax1x.com/2021/01/03/spTyo4.jpg',
-    time: '12月25日 14:13',
+    time: '2020年12月25日 14:13',
     content: {
       text: '成功面基! 虽然没有合照.',
     },
